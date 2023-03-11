@@ -13,6 +13,14 @@ class Car {
   private char Gear;
   private bool is_Started;
   private bool lights_on;
+
+  /*
+    VARIABLE EDITION 
+  */
+  
+  private bool radio_on;
+  
+  // END VARIABLE EDITION
     
   //*****************C A R    I N S T A N C E******************
   public Car()
@@ -21,7 +29,35 @@ class Car {
     Gear       = 'P';
     is_Started = false;
     lights_on  = false;
+
+    /* 
+      OBJECT EDITION
+    */
+
+    radio_on   = false;
+    
+    // END OBJECT EDITION
   }
+
+  /*
+    EDITION FUNCTION 1
+  */
+
+  public void Radio() 
+  {
+    if (!radio_on)
+    {
+      radio_on = true;
+      Console.WriteLine("Radio on");
+    }
+    else
+    {
+      radio_on = false;
+      Console.WriteLine("Radio off");
+    }
+  }
+
+  // END OF EDITION 1
 
   public int Accelerate(bool car_on, char PRD, int amount)
   {
@@ -186,7 +222,12 @@ class Program {
       Console.WriteLine("***    3. Change Gears             ***");
       Console.WriteLine("***    4. Step on The Gas          ***");
       Console.WriteLine("***    5. Step On The Brake        ***");
-      Console.WriteLine("***    6. QUIT                     ***");
+      /*
+        OPTIONS EDITED
+      */
+      Console.WriteLine("***    6. Turn on radio            ***");
+      Console.WriteLine("***    7. QUIT                     ***");
+      // END OPTIONS EDITIONS
       int choice = int.Parse(Console.ReadLine());
       
       switch (choice)
@@ -196,13 +237,17 @@ class Program {
         case 3: gear       = car.ChangeGears(gear, is_Started);       break;
         case 4: Speed      = car.Accelerate(is_Started, gear, 10);    break;
         case 5: Speed      = car.Brake(10);                           break;
-        case 6: is_running = false; 
-                car.Message();                                        break;    
+        /*
+          SWITCH EDITED
+        */
+        case 6: car.Radio();                                          break;
+        case 7: is_running = false; 
+                car.Message();                                        break; 
+        // END EDITION
         default: Console.WriteLine("Invalid Choice. Try Again");      break;   
       } 
       // Close Switch
       
     }
-    
   }  
 }
